@@ -33,17 +33,14 @@ exports.index = (req, res) => {
       res.render('home', {
 		    title: 'Home',
 		    showHeader: false
-		  }, function(err, html) {
+		    }, function(err, html) {
   			res.send(html);}
   		);
  
     }
-
-    ldclient.flush(function() {
-      ldclient.close();
-    });
   });
 
+ // this was from the quickstart but seems to just be slowing it down
  //  console.log(showHeader);
   // res.render('home', {
   //   title: 'Home'

@@ -45,7 +45,7 @@ const passportConfig = require('./config/passport');
 * LaunchDarkly
 */ 
 ldclient = LaunchDarkly.init('sdk-12e399e0-1f2f-47ea-9c62-6c8708b0cbb0')
-
+// dummy user data
 var user = {
   firstName: 'Dan',
   lastName: 'Tacci',
@@ -60,14 +60,19 @@ ldclient.once('ready', function() {
     if (showFeature) {
       // application code to show the new API page
       console.log('Showing your new API page to ' + user.key );
+      var showAPI = true;
+      return showAPI;
     } else {
       // the code to run if the feature is off
       console.log('NOT showing your feature to ' + user.key);
+      var showAPI = false;
+      return showAPI;
     }
 
-    ldclient.flush(function() {
-      ldclient.close();
-    });
+    // commented out
+    // ldclient.flush(function() {
+    //   ldclient.close();
+    // });
   });
 });
 
