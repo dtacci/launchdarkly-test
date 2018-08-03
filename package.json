@@ -1,6 +1,6 @@
 {
   "name": "launchdarkly-test",
-  "version": "1.0",
+  "version": "v1.0.0",
   "description": "A test demo for feature flagging",
   "repository": {
     "type": "git",
