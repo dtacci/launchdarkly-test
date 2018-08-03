@@ -6,12 +6,16 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='theme-color' content='#4DA5F4')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
+    title #{title} - LaunchDarkly Demo
     link(rel='shortcut icon', href='/favicon.png')
     link(rel='stylesheet', href='/css/main.css')
+    script(crossorigin='anonymous' src='https://app.launchdarkly.com/snippet/ldclient.min.js')
 
   body
-    include partials/header
+    if (showHeader == true)
+      include partials/header
+    else
+      -console.log(showHeader)
 
     .container
       include partials/flash

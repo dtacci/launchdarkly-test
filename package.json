@@ -1,12 +1,12 @@
 {
-  "name": "hackathon-starter",
-  "version": "5.1.1",
-  "description": "A boilerplate for Node.js web applications",
+  "name": "launchdarkly-test",
+  "version": "1.0",
+  "description": "A test demo for feature flagging",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/dtacci/launchdarkly-test"
   },
-  "author": "Sahat Yalkabov",
+  "author": "Daniel Tacci",
   "license": "MIT",
   "scripts": {
     "postinstall": "npm rebuild node-sass",
@@ -37,6 +37,8 @@
     "instagram-node": "^0.5.8",
     "jquery": "^3.3.1",
     "lastfm": "^0.9.2",
+    "ldclient-js": "^2.4.0",
+    "ldclient-node": "^5.2.0",
     "lob": "^6.0.0",
     "lusca": "^1.6.0",
     "mongoose": "^5.2.1",

@@ -10,6 +10,7 @@ const chalk = require('chalk');
 const errorHandler = require('errorhandler');
 const lusca = require('lusca');
 const dotenv = require('dotenv');
+const LaunchDarkly = require('ldclient-node');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const path = require('path');
@@ -39,6 +40,36 @@ const contactController = require('./controllers/contact');
  * API keys and Passport configuration.
  */
 const passportConfig = require('./config/passport');
+
+/**
+* LaunchDarkly
+*/ 
+ldclient = LaunchDarkly.init('sdk-12e399e0-1f2f-47ea-9c62-6c8708b0cbb0')
+
+var user = {
+  firstName: 'Dan',
+  lastName: 'Tacci',
+  key: 'danieltacci@gmail.com',
+  custom: {
+    groups: 'beta_testers'
+  }
+};
+
+ldclient.once('ready', function() {
+  ldclient.variation('new-api-page', user, false, function(err, showFeature) {
+    if (showFeature) {
+      // application code to show the new API page
+      console.log('Showing your new API page to ' + user.key );
+    } else {
+      // the code to run if the feature is off
+      console.log('NOT showing your feature to ' + user.key);
+    }
+
+    ldclient.flush(function() {
+      ldclient.close();
+    });
+  });
+});
 
 /**
  * Create Express server.
